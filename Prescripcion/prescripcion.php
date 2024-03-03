@@ -27,10 +27,8 @@ header('Location: ../Logon_1.php');
 
 
 <div id="horizontal_menu" class="sidebar">
-<img src="../Imagenes/LogoDiSur_1.png" alt="campusMVP" style="border-width: 0px" width="100"/>
-<h1><font size="5"
-          face="verdana"
-          color="darkgray">Herramientas de Configuración</h1>
+<img src="../Imagenes/logo.png" alt="logo"/>
+<h1>Herramientas de Configuración</h1>
 
 
 </div>
@@ -81,13 +79,13 @@ header('Location: ../Logon_1.php');
 <div class="contenedor">
 	<br>
 	
-	    <div class="title" align="center">Nuevo Usuario</div>
+	    <div class="title" align="center">Datos del Paciente</div>
 		<br>
 		
 <body>
 <main>
 
-		<form class="formulario" id="formulario" action="Guardar_usr.php" method="post">
+		<form class="formulario" id="formulario" action="Guardar_prescripcion.php" method="post">
 			
 		<!--div id="encabezado"-->
 			
@@ -101,7 +99,7 @@ header('Location: ../Logon_1.php');
 							<div class="formulario__grupo-input">
 								<input type="text" class="formulario__input" name="User" id="User" required>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
-								<label for="User">Usuario:</label>
+								<label for="Folio">Folio:</label>
 								
 							</div>
 						
@@ -116,7 +114,7 @@ header('Location: ../Logon_1.php');
 						<div class="formulario__grupo-input">
 							<input type="Password" class="formulario__input" id="PWD" name= "PWD" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="PWD" >Contraseña:</label>
+							<label for="PWD" >Nombre:</label>
 						</div>
 
 						<p class="formulario__input-error">La contraseña debe tener una longitud de 4 a 12 dígitos.</p>
@@ -132,7 +130,7 @@ header('Location: ../Logon_1.php');
 						<div class="formulario__grupo-input">					
 							<input type="Password" class="formulario__input" id="PWD_2" name="PWD_2" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="PWD_2">Confirmar contraseña:</label>
+							<label for="PWD_2">Apellido Paterno:</label>
 						</div>
 
 						<p class="formulario__input-error">La contraseña no coincide con la anterior.</p>
@@ -147,7 +145,7 @@ header('Location: ../Logon_1.php');
 						<div class="formulario__grupo-input">
 							<input type="text" class="formulario__input" id="nombre" name="nombre" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="nombre">Nombre:</label>
+							<label for="nombre">Apellido Materno:</label>
 						</div>
 					
 					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>
@@ -162,7 +160,7 @@ header('Location: ../Logon_1.php');
 						<div class="formulario__grupo-input">		
 							<input type="text" class="formulario__input" id="Ap_Paterno" name="Ap_Paterno" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="Ap_Paterno">Apellido Paterno:</label>
+							<label for="Ap_Paterno">Fecha de nacimiento:</label>
 						</div>
 					
 					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>	
@@ -177,7 +175,7 @@ header('Location: ../Logon_1.php');
 						<div class="formulario__grupo-input">
 							<input type="text" class="formulario__input" id="Ap_Materno" name="Ap_Materno"  required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="Ap_Materno">Apellido Materno:</label>
+							<label for="Ap_Materno">Temperatura (°C):</label>
 						</div>
 					
 					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>
@@ -192,7 +190,7 @@ header('Location: ../Logon_1.php');
 						<div class="formulario__grupo-input">				
 							<input type="text" class="formulario__input" id="DISUR_ID" name="DISUR_ID" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="DISUR_ID">Disur ID:</label>
+							<label for="DISUR_ID">Presión arterial:</label>
 						</div>
 						
 					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>	
@@ -207,7 +205,7 @@ header('Location: ../Logon_1.php');
 						<div class="formulario__grupo-input">	
 							<input type="email" class="formulario__input" id="e_mail" name="e_mail" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="e_mail">e-mail:</label>
+							<label for="e_mail">Peso (kg):</label>
 						</div>
 
 					<p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guión.</p>
@@ -264,7 +262,7 @@ header('Location: ../Logon_1.php');
 
 
 	</main>
-	<script src="../js/formulario.js"></script>
+	<script src="js/formulario.js"></script>
 
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
