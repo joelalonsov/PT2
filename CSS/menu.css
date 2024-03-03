@@ -1,0 +1,122 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
+  
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Roboto:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 35px;
+    font-family:'Roboto', sans-serif ;
+}
+
+h1{
+    font-size: 30px;
+    text-align:center;
+    padding: 10px;
+    margin-top: 15px;
+	font-family: verdana;
+    color: steelblue;
+    
+}
+
+/*body {
+    background-image: url(../Imagenes/medicine.webp);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}*/
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns:auto auto ;
+    gap: 25px;
+    padding: 80px;
+    text-decoration: none;
+    justify-content: center;
+    margin-top: 0px;
+    /*margin-left: 400px;
+    margin-right: 400px;*/
+
+}
+
+.grid-container > div:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: scale(.90);
+    transition: 1.5s;
+    cursor: pointer;
+}
+
+.grid-container > div {
+    /*background-color: #1E90FF;*/
+    background-image: radial-gradient(circle at 120.71% 50%, #80a0c0 0, #4681b4 50%, #0063a7 100%);
+    text-align: justify-content;
+    border: 0px solid black;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.disur-logo {
+    margin-left: 80%;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media  screen and (max-width: 758px) {
+    
+    body {
+        background-image: url(../Imagenes/medicine.webp);
+        background-size: 100%;
+        background-repeat: no-repeat;
+
+    }
+    .grid-container {
+        display: inline;
+        grid-template-columns: auto;
+        margin-top: 0;
+        height: 100%;
+
+    }
+    
+
+    h1{
+        font-size: 30px;
+        text-align: top;
+        padding: 20px;
+        margin-top: 0px;
+
+    }
+
+    .disur-logo {
+        margin-left: 45%;
+    }
+
+    .grid-container > div {
+        background-color: #008081;
+        text-align: center;
+        border: 3px solid black;
+        padding: 20px;
+        font-size: 30px;
+        border-radius: 20px;
+        color: white;
+        margin: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+    }
+    
+}
+        
+

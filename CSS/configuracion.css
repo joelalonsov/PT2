@@ -1,0 +1,223 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Roboto:wght@100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 35px;
+    font-family: 'verdana', sans-serif ;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    gap: 20px;
+}
+
+li a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+h1{
+    font-size: 30px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+	
+	font-family; arial;
+}
+
+h2 {
+    font-size: 22px;
+    text-align: center;
+    padding: 20px;
+
+}
+
+body {
+    background-image: url(../Imagenes/medicine.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0;
+}
+
+.grid-container-catalogos {
+    
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 15px;
+}
+
+
+
+.grid-container > div:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 1.5s;
+    background-color: darkslategrey;
+    cursor: pointer;
+}
+
+.grid-container-catalogos > div:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: 1.5s;
+    background-color: darkslategrey;
+    cursor: pointer;
+}
+.grid-container > div {
+    background-color: #008081;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 20px;
+    margin: 0px;
+    color: white;
+    width: 30%;
+    margin-left: 35%;
+}
+
+.grid-container-catalogos > div {
+    background-color: #008081;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+    margin: 0px;
+    color: white;
+    width: 30%;
+    margin-left: 35%;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    margin: 15px;
+}
+
+@media  screen and (max-width: 758px) {
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 80px;
+    }
+    li {
+        float: inline-end;
+    }
+
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 10px 10px;
+        text-decoration: none;
+        font-size: 20px;
+        
+    }
+
+    li img {
+        width: 200px;
+        height: 80px;
+    }
+
+    li a:hover {
+        color: black;
+        transition: 1.5s;
+        text-decoration: underline;
+
+    }
+    
+    .grid-container {
+        grid-template-columns: auto auto;
+        display: block;
+        height: 100%;
+        gap: 10px;
+    }
+
+    .grid-container-catalogos {
+        grid-template-columns: auto auto;
+        display: block;
+        gap: 10px;
+    }
+    .cover {
+        background-image: url(/Style/medicine.webp);
+        background-size: cover;
+        background-position: initial;
+        background-repeat: no-repeat;
+        height: 30vh;
+        width: 100%;
+    }
+
+    h1{
+        font-size: 30px;
+        padding: 30px;
+        margin-top: 0px;
+        text-align: center;
+
+    }
+
+    .grid-container > div {
+        background-color: #008081;
+        text-align: center;
+        border: 1px solid black;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 20px;
+        margin: 0px;
+        color: white;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .grid-container-catalogos > div {
+        background-color: #008081;
+        text-align: center;
+        border: 1px solid black;
+        padding: 10px;
+        font-size: 25px;
+        border-radius: 20px;
+        margin: 0px;
+        margin-top: 0px;
+        color: white;
+        width: 100%;
+        gap: 10px;
+    }
+}
+
+
+        
+

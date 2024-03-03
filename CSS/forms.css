@@ -1,0 +1,61 @@
+.hero{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+form{
+	width:60%;
+	max-width: 1000px;
+	
+}
+.input-group{
+	margin-bottom: 30px;
+	position: relative;
+}
+input, textarea{
+	width: 100%;
+	padding: 10px;
+	outline: 0;
+	border: 1px solid #fff;
+	color: #000;
+	background: transparent;
+	font-size: 15px;
+}
+label{
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 10px;
+	color: #000;
+	cursor: text;
+	transition: 0.2s;
+	
+}
+button{
+	padding: 10px 0;
+}
+
+
+
+
+input:focus~label,
+input:valid~label,
+email:focus~label,
+email:valid~label,
+textarea:focus~label,
+textarea:valid~label{
+	top: -35px;
+	font-size: 14px;
+}
+/*
+.row{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+*/
+.row .input-group{
+	flex-basis: 30%;
+	font-size:12px;
+}
