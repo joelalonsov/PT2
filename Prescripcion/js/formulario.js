@@ -2,50 +2,64 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	usuario: /^[a-zA-Z0-9\_\-.]{4,16}$/, // Letras, numeros, guion, punto y guion_bajo
+	folio: /^[a-zA-Z0-9\_\-.]{4,16}$/, // Letras, numeros, guion, punto y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	ap_paterno: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
 	ap_materno: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
-	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	telefono: /^\d{10,14}$/ // 7 a 14 numeros.
+	temperatura: /^\d{1,2}\.\d{1,2}$/, // 1 a 2 digitos, punto y dos decimales.
+	presion_art: /^\d{2,3}\/\d{2,3}$/,
+	peso: /^\d{1,3}\.\d{1,2}$/, // 1 a 3 digitos, punto y dos decimales.
+	estatura: /^\d{1}\.\d{1,2}$/, // 7 a 14 numeros.
+	frec_respiratoria: /^\d{2,3}$/, // 7 a 14 numeros.
+	ritmo_card: /^\d{2,3}$/ // 7 a 14 numeros.
 }
 
+//nombre de cada campo en el formualrio
 const campos = {
-	User: false,
-	PWD: false,
-	nombre: false,
-	Ap_Paterno: false,
-	Ap_Materno: false,
-	e_mail: false
+	Folio: false,
+	Nombre: false,
+	A_Paterno: false,
+	A_Materno: false,
+	Temperatura: false,
+	P_Arterial: false,
+	Peso: false,
+	Estatura: false,
+	Frec_resp: false,
+	Ritmo_Cardiaco: false
+
 }
 
 const validarFormulario = (e) => {
 	switch (e.target.name) {
-		case "User":
-			validarCampo(expresiones.usuario, e.target, 'User');
+		case "Folio":
+			validarCampo(expresiones.folio, e.target, 'Folio');
 		break;
-		case "nombre":
-			validarCampo(expresiones.nombre, e.target, 'nombre');
+		case "Nombre":
+			validarCampo(expresiones.nombre, e.target, 'Nombre');
 		break;
-		case "Ap_Paterno":
-			validarCampo(expresiones.nombre, e.target, 'ap_paterno');
+		case "A_Paterno":
+			validarCampo(expresiones.nombre, e.target, 'A_Paterno');
 		break;
-		case "Ap_Materno":
-			validarCampo(expresiones.nombre, e.target, 'ap_materno');
+		case "A_Materno":
+			validarCampo(expresiones.nombre, e.target, 'A_Materno');
 		break;
-		case "PWD":
-			validarCampo(expresiones.password, e.target, 'password');
-			validarPassword2();
+		case "Temperatura":
+			validarCampo(expresiones.temperatura, e.target, 'Temperatura');
 		break;
-		case "PWD_2":
-			validarPassword2();
+		case "P_Arterial":
+			validarCampo(expresiones.presion_art, e.target, 'P_Arterial');
 		break;
-		case "e_mail":
-			validarCampo(expresiones.correo, e.target, 'correo');
+		case "Peso":
+			validarCampo(expresiones.peso, e.target, 'Peso');
 		break;
-		case "telefono":
-			validarCampo(expresiones.telefono, e.target, 'telefono');
+		case "Estatura":
+			validarCampo(expresiones.estatura, e.target, 'Estatura');
+		break;
+		case "Frec_resp":
+			validarCampo(expresiones.frec_respiratoria, e.target, 'Frec_resp');
+		break;
+		case "Ritmo_Cardiaco":
+			validarCampo(expresiones.ritmo_card, e.target, 'Ritmo_Cardiaco');
 		break;
 	}
 }
@@ -68,6 +82,7 @@ const validarCampo = (expresion, input, campo) => {
 	}
 }
 
+/*
 const validarPassword2 = () => {
 	const inputPassword1 = document.getElementById('PWD');
 	const inputPassword2 = document.getElementById('PWD_2');
@@ -88,6 +103,7 @@ const validarPassword2 = () => {
 		campos['password'] = true;
 	}
 }
+*/
 
 inputs.forEach((input) => {
 	input.addEventListener('keyup', validarFormulario);
@@ -115,6 +131,6 @@ formulario.addEventListener('submit', (e) => {
 		});
 	} else {
 		document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo');
-		e.preventDefault();
+		//e.preventDefault();
 	}
 });

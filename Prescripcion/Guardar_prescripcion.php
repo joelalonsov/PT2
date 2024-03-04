@@ -1,70 +1,30 @@
 <?php
-include('../../CNX/cnxon.php');
-$nombre='';
-if ($_REQUEST['PWD'] <> $_REQUEST['PWD_2']){
-	echo "La confirmación de contraseña no coincide";
-}
-else
-{
- 
-$pwd_recibe = $_REQUEST['PWD'];
-$regexp_pwd = '/^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/';
-$pwd_valida = preg_match($regexp_pwd,$pwd_recibe);
-
-if($pwd_valida == 0){
-echo "La longitud mínima de la contraseña debe ser de 8 posiciones, debe contener letras y números y por lo menos un carácter especial (#,$,-,_,&,%)";
-}
-else
-{
- 
-try{
-    $Snombre = $_REQUEST['nombre'];
-    $SApaterno = $_REQUEST['Ap_Paterno'];
-    $SAmaterno = $_REQUEST['Ap_Materno'];
+include('../CNX/cnxon.php');
 
 
-    $pdoQuery_1 = $conn-> prepare("SELECT * FROM `tbl_usuarios` WHERE `nombre` = ?");
-
-    $pdoQuery_1->execute(array($Snombre));
-
-    while($reg=$pdoQuery_1->fetch(PDO::FETCH_ASSOC)){
-	
-        $nombre=$reg['nombre'];
-        //$aPaterno=$reg['apaterno'];
-        //$aMaterno=$reg['amaterno'];
-        //$PWD=$reg['password'];
-        
-    }
-}catch (Excepton $e){
-    die('Error:'. $e->getMessage());
-}
-
-if ($nombre==$Snombre)
-    {
-	echo "<script languaje='JavaScript'> if(!alert('El Id del usuario ya existe')); javascript:history.back();
-</script>";
-
-
-
-	}else{
-		//mysqli_query($conn, $SQL2) or die(mysqli_error($conn));	 
-
-/*echo "<script languaje='JavaScript'> if(!alert('Validación exitosa de usuario')) window.location = 'alta_usuarios.php';
-</script>";*/
-
-echo '<script language="javascript">alert("***Validación exitosa de usuario***"); return false;</script>';
+date_default_timezone_set(timezoneId:"America/Mexico_City");
 
 try{
-    $Inombre = $_REQUEST['nombre'];
-    $IAp_Paterno = $_REQUEST['Ap_Paterno'];
-    $IAP_Materno = $_REQUEST['Ap_Materno'];
-    $IUser = $_REQUEST['User'];
-    $IPWD = $_REQUEST['PWD'];
+    $IFolio = $_REQUEST['Folio'];
+    $INombre = $_REQUEST['Nombre'];
+    $IA_Paterno = $_REQUEST['A_Paterno'];
+    $IA_Materno = $_REQUEST['A_Materno'];
+    $IFecha_nac = $_REQUEST['Fecha_nac'];
+    $ITemperatura = $_REQUEST['Temperatura'];
+    $IPresion_art = $_REQUEST['P_Arterial'];
+    $IPeso = $_REQUEST['Peso'];
+    $IEstatura = $_REQUEST['Estatura'];
+    $IFResp = $_REQUEST['Frec_resp'];
+    $IRCard = $_REQUEST['Ritmo_Cardiaco'];
+    $ICaptura = "joel.alonso";
+    $IAhora =  date(format: 'Y-m-d H:i:s');
 
-$pdoQuery_2 = $conn-> prepare( "INSERT INTO `tbl_usuarios`(`nombre`, `apaterno`, `amaterno`, `usuario`, `password`, `perfil`) VALUES 
-(:Inombre, :IAp_Paterno, :IAP_Materno, :IUser, :IPWD, :IPWD)");
+$pdoQuery_2 = $conn-> prepare( "INSERT INTO `tbl_prescripcion`(`folio`, `pac_nombre`, `pac_A_paterno`, `pac_A_materno`, `fecha_nac`, `temperatura`, `presion`, `peso`, `estatura`, 
+`frecuencia_resp`, `ritmo_card`, `creado_por`, `fecha_creacion`) VALUES 
+(:IFolio, :INombre, :IA_Paterno, :IA_Materno, :IFecha_nac, :ITemperatura, :IPresion_art, :IPeso, :IEstatura, :IFResp, :IRCard, :ICaptura, :IAhora )");
 
-$pdoExec = $pdoQuery_2->execute(array(":Inombre"=>$Inombre, ":IAp_Paterno"=>$IAp_Paterno, ":IAP_Materno"=>$IAP_Materno, ":IUser"=>$IUser, ":IPWD"=>$IPWD, ":IPWD"=>$IPWD));
+$pdoExec = $pdoQuery_2->execute(array(":IFolio" =>$IFolio, ":INombre" =>$INombre, ":IA_Paterno"=>$IA_Paterno, ":IA_Materno"=>$IA_Paterno, "IFecha_nac" => $IFecha_nac, ":ITemperatura"=>$ITemperatura, 
+":IPresion_art"=>$IPresion_art, ":IPeso"=>$IPeso, ":IEstatura"=>$IEstatura, ":IFResp"=>$IFResp, ":IRCard"=>$IRCard, ":ICaptura"=>$ICaptura, ":IAhora" => $IAhora ));
 
     if($pdoExec)
     {
@@ -79,12 +39,7 @@ $pdoExec = $pdoQuery_2->execute(array(":Inombre"=>$Inombre, ":IAp_Paterno"=>$IAp
     die('Error:'. $e->getMessage());
 }
 
-	}
         
-
-    
 $conn = null;
-}
-}
 
 ?>

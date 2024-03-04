@@ -11,8 +11,6 @@ header('Location: ../Logon_1.php');
 <?php include "../Includes/scripts.php";?>
 <title>Alta Usr DiSur</title>
 
-
-
 <link rel="stylesheet" type="text/css" href="../CSS/Input.css">
 <!--link rel="stylesheet" type="text/css" href="../../CSS/estilo.css"/-->
 <link rel="stylesheet" type="text/css" href="../CSS/forms.css"/>
@@ -20,26 +18,17 @@ header('Location: ../Logon_1.php');
 <link rel="stylesheet" href="../CSS/menu_H.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
 </head>
 <body>
 
-
 <div id="horizontal_menu" class="sidebar">
 <img src="../Imagenes/logo.png" alt="logo"/>
-<h1>Herramientas de Configuración</h1>
-
+<h1>Prescripción</h1>
 
 </div>
 <br><br>
 
 <nav class="menuCSS3">
-
-	
-		<!--label for="check" class="checkbtn">
-		<i class="fa fa-bars" aria-hidden="true"></i>
-		</label-->
 
 		<div id="toggle-menu" class="toggle-menu">
 			
@@ -72,7 +61,7 @@ header('Location: ../Logon_1.php');
 			
 		</ul>
 </nav>
-<script src="js/scripts.js"></script>
+<!--script src="js/scripts.js"></script-->
 
 <!-- Página original abajo:-->
 
@@ -89,63 +78,62 @@ header('Location: ../Logon_1.php');
 			
 		<!--div id="encabezado"-->
 			
-			<!--label-->
 			 <br>
-			 <!--Usuario-->
-			 <div class="formulario__grupo" id="grupo__User">
+			 <!--Folio-->
+			 <div class="formulario__grupo" id="grupo__Folio">
 			 	<div class="row">
 					<div class="input-group">
 							
 							<div class="formulario__grupo-input">
-								<input type="text" class="formulario__input" name="User" id="User" required>
+								<input type="text" class="formulario__input" name="Folio" id="Folio" required>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<label for="Folio">Folio:</label>
 								
 							</div>
 						
-						<p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+						<p class="formulario__input-error">El folio debe contener de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
 					</div>
 				</div>
 			</div>
 			<!--Contraseña 1-->
-			<div class="formulario__grupo" id="grupo__password">
+			<div class="formulario__grupo" id="grupo__Nombre">
 				<div class="row">
 					<div class="input-group">
 						<div class="formulario__grupo-input">
-							<input type="Password" class="formulario__input" id="PWD" name= "PWD" required>
+							<input type="text" class="formulario__input" id="Nombre" name= "Nombre" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="PWD" >Nombre:</label>
+							<label for="Nombre" >Nombre:</label>
 						</div>
 
-						<p class="formulario__input-error">La contraseña debe tener una longitud de 4 a 12 dígitos.</p>
+						<p class="formulario__input-error">Solo puede contener letras y espacios.</p>
 					</div>	
 					
 				</div>
 			</div>
 
 			<!--Contraseña 2-->
-			<div class="formulario__grupo" id="grupo__password2">
+			<div class="formulario__grupo" id="grupo__A_Paterno">
 				<div class="row">	
 					<div class="input-group">
 						<div class="formulario__grupo-input">					
-							<input type="Password" class="formulario__input" id="PWD_2" name="PWD_2" required>
+							<input type="text" class="formulario__input" id="A_Paterno" name="A_Paterno" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="PWD_2">Apellido Paterno:</label>
+							<label for="A_Paterno">Apellido Paterno:</label>
 						</div>
 
-						<p class="formulario__input-error">La contraseña no coincide con la anterior.</p>
+						<p class="formulario__input-error">Solo puede contener letras y espacios.</p>
 					</div>
 				</div>
 			</div>
 			
 			<!--Nombre -->
-			<div class="formulario__grupo" id="grupo__nombre">
+			<div class="formulario__grupo" id="grupo__A_Materno">
 				<div class="row">
 					<div class="input-group">
 						<div class="formulario__grupo-input">
-							<input type="text" class="formulario__input" id="nombre" name="nombre" required>
+							<input type="text" class="formulario__input" id="A_Materno" name="A_Materno" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="nombre">Apellido Materno:</label>
+							<label for="A_Materno">Apellido Materno:</label>
 						</div>
 					
 					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>
@@ -154,91 +142,107 @@ header('Location: ../Logon_1.php');
 			</div>
 
 			<!--Apellido paterno -->
-			<div class="formulario__grupo" id="grupo__ap_paterno">
+			<div class="formulario__grupo" id="grupo__Fecha_nac">
 				<div class="row">
 					<div class="input-group">
 						<div class="formulario__grupo-input">		
-							<input type="text" class="formulario__input" id="Ap_Paterno" name="Ap_Paterno" required>
+							<input type="date" class="formulario__input" id="Fecha_nac" name="Fecha_nac" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="Ap_Paterno">Fecha de nacimiento:</label>
+							<label for="Fecha_nac">Fecha de nacimiento:</label>
 						</div>
 					
-					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>	
+					<p class="formulario__input-error">Solo puede contener formato fecha.</p>	
 					</div>
 				</div>
 			</div>
 
-			<!--Apellido materno -->
-			<div class="formulario__grupo" id="grupo__ap_materno">
+			<!--Temperatura -->
+			<div class="formulario__grupo" id="grupo__Temperatura">
 				<div class="row">
 					<div class="input-group">
 						<div class="formulario__grupo-input">
-							<input type="text" class="formulario__input" id="Ap_Materno" name="Ap_Materno"  required>
+							<input type="text" class="formulario__input" id="Temperatura" name="Temperatura"  required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="Ap_Materno">Temperatura (°C):</label>
+							<label for="Temperatura">Temperatura (°C):</label>
 						</div>
 					
-					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>
+					<p class="formulario__input-error">Solo puede contener hasta dos enteros y dos decimales.</p>
 					</div>
 				</div>
 			</div>
 
-			<!--Disur Id -->
-			<div class="formulario__grupo" id="grupo__Disur_id">
+			<!--Grupo: Presión arterial -->
+			<div class="formulario__grupo" id="grupo__P_Arterial">
 				<div class="row">
 					<div class="input-group">
 						<div class="formulario__grupo-input">				
-							<input type="text" class="formulario__input" id="DISUR_ID" name="DISUR_ID" required>
+							<input type="text" class="formulario__input" id="P_Arterial" name="P_Arterial" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="DISUR_ID">Presión arterial:</label>
+							<label for="P_Arterial">Presión arterial:</label>
 						</div>
 						
-					<p class="formulario__input-error">Solo puede contener letras y espacios.</p>	
+					<p class="formulario__input-error">Solo puede contener números razones dentro de los rangos.</p>	
 					</div>
 				</div>
 			</div>
 
-			<!--Grupo: Correo electrónico-->
-			<div class="formulario__grupo" id="grupo__correo">	
+			<!--Grupo: Peso-->
+			<div class="formulario__grupo" id="grupo__Peso">	
 				<div class="row">	
 					<div class="input-group">
 						<div class="formulario__grupo-input">	
-							<input type="email" class="formulario__input" id="e_mail" name="e_mail" required>
+							<input type="text" class="formulario__input" id="Peso" name="Peso" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="e_mail">Peso (kg):</label>
+							<label for="Peso">Peso (kg):</label>
 						</div>
 
-					<p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guión.</p>
+					<p class="formulario__input-error">El peso solo puede contener hasta tres enteros y dos decimales.</p>
 					</div>							
 				</div>
 			</div>
 
+			<!--Estatura -->
+			<div class="formulario__grupo" id="grupo__Estatura">
 				<div class="row">
 					<div class="input-group">
-						<input type="text" class="formulario__input" id="Location" name="Location" required>
-						<label for="Location">Sucursal:</label>
-					</div>		
-					
-				</div>
-				
-				<div class="row">	
-					<div class="input-group">
-						
-					</div>							
-				</div>
-
-				<!--Grupo: Teléfono-->
-			<div class="formulario__grupo" id="grupo__telefono">	
-				<div class="row">	
-					<div class="input-group">
-						<div class="formulario__grupo-input">	
-							<input type="text" class="formulario__input" id="telefono" name="telefono" required>
+						<div class="formulario__grupo-input">
+							<input type="text" class="formulario__input" id="Estatura" name="Estatura"  required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="telefono">Teléfono:</label>
+							<label for="Estatura">Estatura (m):</label>
 						</div>
+					
+					<p class="formulario__input-error">Solo puede contener un número entero y dos decimales.</p>
+					</div>
+				</div>
+			</div>
 
-					<p class="formulario__input-error">El teléfono solo puede conterner números (10 dígitos).</p>
-					</div>							
+			<!--Grupo: Frecuencia respiratoria -->
+			<div class="formulario__grupo" id="grupo__Frec_resp">
+				<div class="row">
+					<div class="input-group">
+						<div class="formulario__grupo-input">				
+							<input type="text" class="formulario__input" id="Frec_resp" name="Frec_resp" required>
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+							<label for="Frec_resp">Frecuencia respiratoria (Resp/min):</label>
+						</div>
+						
+					<p class="formulario__input-error">Solo puede contener hasta tres dígitos.</p>	
+					</div>
+				</div>
+			</div>
+			
+			<!--Grupo: Ritmo cardiaco -->
+			<div class="formulario__grupo" id="grupo__Ritmo_Cardiaco">
+				<div class="row">
+					<div class="input-group">
+						<div class="formulario__grupo-input">				
+							<input type="text" class="formulario__input" id="Ritmo_Cardiaco" name="Ritmo_Cardiaco" required>
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+							<label for="Ritmo_Cardiaco">Ritmo cardiaco (Latidos/min):</label>
+						</div>
+						
+					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+					</div>
 				</div>
 			</div>
 
@@ -252,9 +256,9 @@ header('Location: ../Logon_1.php');
 </div>
 
 
-	<div class="formulario__mensaje" id="formulario__mensaje">
+	<!--div class="formulario__mensaje" id="formulario__mensaje">
 		<p><i class="fas fa-exclamation-triangle"></i> <b>Error: </b> Favor de llenar el formulario correctamente </p>
-	</div>
+	</div-->
 
 	
 
@@ -266,6 +270,6 @@ header('Location: ../Logon_1.php');
 
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
-	<script src="../js/scripts.js"></script>
+	<!--script src="../js/scripts.js"></script-->
 </body>
 </html>
