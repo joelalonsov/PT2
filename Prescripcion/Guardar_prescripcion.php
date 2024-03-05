@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../CNX/cnxon.php');
 
 
@@ -16,7 +17,7 @@ try{
     $IEstatura = $_REQUEST['Estatura'];
     $IFResp = $_REQUEST['Frec_resp'];
     $IRCard = $_REQUEST['Ritmo_Cardiaco'];
-    $ICaptura = "joel.alonso";
+    $ICaptura = $_SESSION['Usuario'];
     $IAhora =  date(format: 'Y-m-d H:i:s');
 
 $pdoQuery_2 = $conn-> prepare( "INSERT INTO `tbl_prescripcion`(`folio`, `pac_nombre`, `pac_A_paterno`, `pac_A_materno`, `fecha_nac`, `temperatura`, `presion`, `peso`, `estatura`, 
@@ -29,7 +30,7 @@ $pdoExec = $pdoQuery_2->execute(array(":IFolio" =>$IFolio, ":INombre" =>$INombre
     if($pdoExec)
     {
         echo 'Datos insertados';
-        echo "<script languaje='JavaScript'> window.location = 'consulta_usuarios.php';
+        echo "<script languaje='JavaScript'> window.location = 'consulta_pacientes.php';
 </script>";
     }else{
         echo 'Datos No insertados';
