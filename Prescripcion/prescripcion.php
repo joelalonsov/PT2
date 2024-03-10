@@ -3,6 +3,8 @@
 session_start();
 if(!isset($_SESSION['Usuario'])){
 header('Location: ../Logon_1.php');
+include('../CNX/cnxon.php');
+
 }
 ?>
 <!DOCTYPE html>
@@ -16,10 +18,13 @@ header('Location: ../Logon_1.php');
 <link rel="stylesheet" type="text/css" href="../CSS/forms.css"/>
 <link rel="stylesheet" href="../CSS/estilos.css">
 <link rel="stylesheet" href="../CSS/menu_H.css">
+<link rel="stylesheet" href="../CSS/modal.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
+
+
 
 <div id="horizontal_menu" class="sidebar">
 <img src="../Imagenes/logo.png" alt="logo"/>
@@ -49,7 +54,7 @@ header('Location: ../Logon_1.php');
 			</li>
 			<li class="main-menu__item"><a href="#">Catálogos</a>
 				<ul>
-					<li class="item-son1"><a href="#">Prescripción</a></li>
+					<li class="item-son1"><a href="../Configuracion/Catalogos/Prescripcion/cat_cie_10.php">Prescripción</a></li>
 					<li class="item-son1"><a href="#">Dispensación</a></li>
 					<li class="item-son1"><a href="#">Control de Inventario</a></li>
 					<li class="item-son1"><a href="#">Recursos Materiales</a></li>
@@ -64,6 +69,35 @@ header('Location: ../Logon_1.php');
 <!--script src="js/scripts.js"></script-->
 
 <!-- Página original abajo:-->
+
+
+<section class="modal ">
+	<div class="modal__container">
+			<img src="../Imagenes/modal.svg" class="modal__img">
+			<h2 class="modal__title">¡Bienvenido al sitio!</h2>
+			<p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus suscipit odio nulla 
+				esse repellat labore animi iure natus, obcaecati quis nesciunt, eius quos possimus quasi quibusdam laudantium 
+				alias sint. Eius.</p>
+				<a href="#" class="modal__close">Cerrar Modal</a>
+	</div>	
+</section>
+
+<!--
+<h1>Ventana Modal</h1>
+<a href="modal" id="show-modal">Abrir Ventana</a>
+
+<aside id="modal" class="modal">
+	<div class="content-modal">
+		<header>
+			<a href="#" class="close-modal">X</a>
+			<h2>Buen Trabajo!</h2>
+		</header>
+		<article></article>
+	</div>
+	<a href="#" class="btn-close-modal"></a>
+</aside>
+
+-->
 
 <div class="contenedor">
 	<br>
@@ -246,6 +280,35 @@ header('Location: ../Logon_1.php');
 				</div>
 			</div>
 
+			<!--Grupo: Cat. CIE-10 -->
+			<div class="formulario__grupo" id="grupo__Padecimiento_Principal">
+				<div class="row">
+					<div class="input-group">
+						<div class="formulario__grupo-input">				
+							<div class="row">
+          
+								<div class="input-group">
+
+									<input type="text" class="formulario__input" name="CIE10" id="CIE10" required>
+						  			<i class="formulario__validacion-estado fas fa-times-circle"></i>
+									<label for="CIE10">Padecimiento principal:</label>
+									
+								</div>
+							</div>
+						<div class="row">
+							<div>
+	  							<!--input type="submit" onclick = "this.form.action = 'cat_cie_10_Result.php'; this.form.submit()" name="search" value="Buscar...1" class="styled-button-8" /-->
+								<a href="#" class="hero__cta">Buscar</a>
+
+							</div>
+	  					</div>
+						
+					</div>
+						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+					</div>
+				</div>
+			</div>
+
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
 				<div class="row">
 					<input type="submit" value = Guardar class="styled-button-8"/>
@@ -260,16 +323,20 @@ header('Location: ../Logon_1.php');
 		<p><i class="fas fa-exclamation-triangle"></i> <b>Error: </b> Favor de llenar el formulario correctamente </p>
 	</div-->
 
-	
+
+
 
 </form>
 
 
 	</main>
 	<script src="js/formulario.js"></script>
-
+	<script src="js/main.js"></script>
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 
 	<!--script src="../js/scripts.js"></script-->
+
+
+
 </body>
 </html>

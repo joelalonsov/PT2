@@ -122,7 +122,7 @@ main {
 .formulario__grupo-terminos, 
 .formulario__mensaje,
 .formulario__grupo-btn-enviar {
-	grid-column: span 2;
+	grid-column: span 3;
 }
 
 .formulario__mensaje {

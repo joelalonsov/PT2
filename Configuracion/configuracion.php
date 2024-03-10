@@ -64,6 +64,9 @@ header('Location: ../Logon_1.php');
 			<li class="main-menu__item"><a href="#">Catálogos</a>
 				<ul>
 					<li class="item-son1"><a href="#">Prescripción</a></li>
+						<ol>
+							<li class="item-son2"><a href="Catalogos/Prescripcion/cat_cie_10.php">Catálogo CIE-10</a></li>
+						</ol>
 					<li class="item-son1"><a href="#">Dispensación</a></li>
 					<li class="item-son1"><a href="#">Control de Inventario</a></li>
 					<li class="item-son1"><a href="#">Recursos Materiales</a></li>
