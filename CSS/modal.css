@@ -12,6 +12,7 @@
     --transform: translateY(-100vh);
     --transition: transform 0.8s;
     z-index: 1;
+    
 }
 
 .modal--show{
@@ -36,6 +37,8 @@
     grid-auto-columns: 100%;
     transform: var(--transform);
     transition:var(--transition);
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .modal__title{

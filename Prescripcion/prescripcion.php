@@ -73,8 +73,47 @@ include('../CNX/cnxon.php');
 
 <section class="modal ">
 	<div class="modal__container">
-			<img src="../Imagenes/modal.svg" class="modal__img">
-			<h2 class="modal__title">¡Bienvenido al sitio!</h2>
+			<!--img src="../Imagenes/modal.svg" class="modal__img"-->
+
+
+
+			<h2 class="modal__title">Catálogo CIE-10</h2>
+
+			<table style="width:95%" border="1">
+				<tr>
+				<th style="width:10px">Consecutivo</th><th>Nombre</th><th>Seleccionar</th>
+				</tr>
+				
+
+				<?php
+					
+
+					try{
+							include('../CNX/cnxon.php');
+							$pdoQuery_1 = $conn-> prepare("SELECT consecutivo, nombre FROM `cat_cie_10` WHERE `nombre` LIKE '%cabeza%' ORDER BY `consecutivo` ASC");
+							$pdoQuery_1->execute();
+
+							while($reg=$pdoQuery_1->fetch(PDO::FETCH_ASSOC)){
+								echo '<tr>';
+								echo '<td>';
+								echo $reg['consecutivo'];
+								echo '</td>';
+								echo '<td>';
+								echo $reg['nombre'];
+								echo '</td>';
+								echo '<td>';
+								echo '<a href="#"><img src="../Imagenes/view.png" height="20" border="0"></a>';
+								echo '</td>';           
+								echo '</tr>';
+					
+							}
+							
+						}catch(Excepton $e){
+						die('Error:'. $e->getMessage());
+					  }
+				?>
+			</table>
+
 			<p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus suscipit odio nulla 
 				esse repellat labore animi iure natus, obcaecati quis nesciunt, eius quos possimus quasi quibusdam laudantium 
 				alias sint. Eius.</p>
