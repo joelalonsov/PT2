@@ -21,6 +21,21 @@ include('../CNX/cnxon.php');
 <link rel="stylesheet" href="../CSS/modal.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!--script  type="text/javascript">
+
+		$(document).on("change","#CIE10", function(event)
+		{
+		let cie10=document.getElementById("CIE10").value;
+		console.log(cie10);
+			
+		//$("#carga_tabla").html("<img src='loading.gif' height='65'/>");
+		$("#carga_tabla").load('tabla_cie.php?cie__10='+cie10);
+		});
+</script-->
+
+
+
+
 </head>
 <body>
 
@@ -79,44 +94,13 @@ include('../CNX/cnxon.php');
 
 			<h2 class="modal__title">Catálogo CIE-10</h2>
 
-			<table style="width:95%" border="1">
-				<tr>
-				<th style="width:10px">Consecutivo</th><th>Nombre</th><th>Seleccionar</th>
-				</tr>
-				
+			
 
-				<?php
-					
+			<p id="carga_tabla"></p>
 
-					try{
-							include('../CNX/cnxon.php');
-							$pdoQuery_1 = $conn-> prepare("SELECT consecutivo, nombre FROM `cat_cie_10` WHERE `nombre` LIKE '%cabeza%' ORDER BY `consecutivo` ASC");
-							$pdoQuery_1->execute();
-
-							while($reg=$pdoQuery_1->fetch(PDO::FETCH_ASSOC)){
-								echo '<tr>';
-								echo '<td>';
-								echo $reg['consecutivo'];
-								echo '</td>';
-								echo '<td>';
-								echo $reg['nombre'];
-								echo '</td>';
-								echo '<td>';
-								echo '<a href="#"><img src="../Imagenes/view.png" height="20" border="0"></a>';
-								echo '</td>';           
-								echo '</tr>';
-					
-							}
-							
-						}catch(Excepton $e){
-						die('Error:'. $e->getMessage());
-					  }
-				?>
-			</table>
-
-			<p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus suscipit odio nulla 
+			<!--p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus suscipit odio nulla 
 				esse repellat labore animi iure natus, obcaecati quis nesciunt, eius quos possimus quasi quibusdam laudantium 
-				alias sint. Eius.</p>
+				alias sint. Eius.</p-->
 				<a href="#" class="modal__close">Cerrar Modal</a>
 	</div>	
 </section>
@@ -328,7 +312,23 @@ include('../CNX/cnxon.php');
           
 								<div class="input-group">
 
-									<input type="text" class="formulario__input" name="CIE10" id="CIE10" required>
+									<input type="text" class="formulario__input" name="CIE10" id="CIE10" onchange="llena_tabla()" required>
+
+									<script type=text/javascript>
+										function llena_tabla(){
+											let cie_10=document.getElementById("CIE10").value;	
+										
+										console.log(cie_10);
+										
+										fetch('tabla_cie.php?cie__10='+cie_10)
+											.then(response=>response.text())
+											.then(value=>{
+												document.getElementById('carga_tabla').innerHTML=value
+											});
+
+										}
+									</script>
+
 						  			<i class="formulario__validacion-estado fas fa-times-circle"></i>
 									<label for="CIE10">Padecimiento principal:</label>
 									
