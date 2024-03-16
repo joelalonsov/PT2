@@ -96,8 +96,16 @@ include('../CNX/cnxon.php');
 
 			
 
-			<p id="carga_tabla"></p>
+			<p id="carga_tabla">
+				</table>
 
+			</p>
+			<script>
+				var tabla = document.createElement("table");
+				tabla.setAttribute("id", "tabla_CIE_10");
+				//document.body.appendChild(tabla_CIE_10);
+			</script>
+			
 			<!--p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus suscipit odio nulla 
 				esse repellat labore animi iure natus, obcaecati quis nesciunt, eius quos possimus quasi quibusdam laudantium 
 				alias sint. Eius.</p-->
@@ -319,6 +327,8 @@ include('../CNX/cnxon.php');
 											let cie_10=document.getElementById("CIE10").value;	
 										
 										console.log(cie_10);
+
+										
 										
 										fetch('tabla_cie.php?cie__10='+cie_10)
 											.then(response=>response.text())
@@ -344,6 +354,37 @@ include('../CNX/cnxon.php');
 						
 					</div>
 						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+					</div>
+				</div>
+			</div>
+
+
+			<!--Grupo: CIE-10 Id -->
+			<div class="formulario__grupo" id="grupo__CIE_10_Id">
+				<div class="row">
+					<div class="input-group">
+						<div class="formulario__grupo-input">				
+							<input type="text" class="formulario__input" id="cie_10_id" name="cie_10_id" required>
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+							<label for="cie_10_id">CIE 10:</label>
+						</div>
+						
+					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+					</div>
+				</div>
+			</div>
+
+			<!--Grupo: CIE-10 Descripción -->
+			<div class="formulario__grupo" id="grupo__CIE_10_Descripcion">
+				<div class="row">
+					<div class="input-group">
+						<div class="formulario__grupo-input">				
+							<input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required>
+							<i class="formulario__validacion-estado fas fa-times-circle"></i>
+							<label for="cie_10_desc">Descripción:</label>
+						</div>
+						
+					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
 					</div>
 				</div>
 			</div>
