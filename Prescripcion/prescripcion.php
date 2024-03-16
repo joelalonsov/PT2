@@ -101,8 +101,8 @@ include('../CNX/cnxon.php');
 
 			</p>
 			<script>
-				var tabla = document.createElement("table");
-				tabla.setAttribute("id", "tabla_CIE_10");
+				//var tabla = document.createElement("table");
+				//tabla.setAttribute("id", "tabla_CIE_10");
 				//document.body.appendChild(tabla_CIE_10);
 			</script>
 			

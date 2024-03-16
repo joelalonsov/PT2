@@ -5,6 +5,9 @@ const closeModal = document.querySelector('.modal__close');
 
 //const tabla = document.getElementById('table')
 
+    var tabla = document.createElement("table");
+	tabla.setAttribute("id", "tabla_CIE_10");
+
 openModal.addEventListener('click', (e)=>{
     e.preventDefault();
     modal.classList.add('modal--show');
