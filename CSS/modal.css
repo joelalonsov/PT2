@@ -66,6 +66,12 @@
     transition: background-color 0.3s;
 }
 
+.selected {
+    background-color: yellow;
+    font-weight: bold;
+  }
+
+
 .modal__close:hover{
     color: #F26250;
     background-color: #fff;
