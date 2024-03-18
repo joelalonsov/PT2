@@ -19,6 +19,7 @@ include('../CNX/cnxon.php');
 <link rel="stylesheet" href="../CSS/estilos.css">
 <link rel="stylesheet" href="../CSS/menu_H.css">
 <link rel="stylesheet" href="../CSS/modal.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!--script  type="text/javascript">
@@ -109,7 +110,7 @@ include('../CNX/cnxon.php');
 			<!--p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus suscipit odio nulla 
 				esse repellat labore animi iure natus, obcaecati quis nesciunt, eius quos possimus quasi quibusdam laudantium 
 				alias sint. Eius.</p-->
-				<a href="#" class="modal__close">Cerrar Modal</a>
+				<a href="#" class="modal__close">Cerrar</a>
 	</div>	
 </section>
 

@@ -4,9 +4,9 @@
     <head></head>
 <body>
 
-<table style="width:95%" id="tabla_CIE_10" border="1" class "modal__tabla">
+<table style="width:95%" id="tabla_CIE_10" class "modal__tabla">
 				<tr>
-				<th style="width:10px">Consecutivo</th><th>Nombre</th><th>Seleccionar</th>
+				<th style="width:10px">Código</th><th style="width:600px">Descripción</th>
 				</tr>
 
 
@@ -30,10 +30,7 @@ try{
         echo '<td id="r'.$renglon.'2">'; 
         echo $reg['nombre'];
         echo '</td>';
-        echo '<td id="r'.$renglon.'3">'; 
-        echo '<a href="#"><img src="../Imagenes/view.png" height="20" border="0" ></a>';
-        //echo '<button class="btn btn-warning"> Seleccionar </button>';
-        echo '</td>';           
+                 
         echo '</tr>';
     $renglon+=1;
     }

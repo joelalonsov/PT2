@@ -66,6 +66,37 @@
     transition: background-color 0.3s;
 }
 
+table{
+    background-color: white;
+    text-align: center;
+    width: 100%;
+	font-size: 12px;
+}
+
+th, td{
+    
+    padding: 5px;
+	font-size: 13px;     font-weight: normal;
+}
+
+th{
+    border-bottom: 1px solid #999;
+    /*width: 25%;*/
+	font-size: 13px;
+    font-weight: bold;
+}
+
+thead{
+    background-color: white;
+    border-bottom: solid 5px #0F362D;
+    color: black;
+    
+}
+
+tr:nth-child(even){
+background-color: #87CEEB;
+}
+
 .selected {
     background-color: yellow;
     font-weight: bold;
