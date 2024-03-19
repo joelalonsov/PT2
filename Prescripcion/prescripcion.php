@@ -20,21 +20,8 @@ include('../CNX/cnxon.php');
 <link rel="stylesheet" href="../CSS/menu_H.css">
 <link rel="stylesheet" href="../CSS/modal.css">
 
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!--script  type="text/javascript">
-
-		$(document).on("change","#CIE10", function(event)
-		{
-		let cie10=document.getElementById("CIE10").value;
-		console.log(cie10);
-			
-		//$("#carga_tabla").html("<img src='loading.gif' height='65'/>");
-		$("#carga_tabla").load('tabla_cie.php?cie__10='+cie10);
-		});
-</script-->
-
-
 
 
 </head>
@@ -100,6 +87,7 @@ include('../CNX/cnxon.php');
 			<p id="carga_tabla">
 				</table>
 
+		
 			</p>
 			<script>
 				//var tabla = document.createElement("table");
@@ -113,6 +101,7 @@ include('../CNX/cnxon.php');
 				<a href="#" class="modal__close">Cerrar</a>
 	</div>	
 </section>
+
 
 <!--
 <h1>Ventana Modal</h1>
@@ -211,10 +200,11 @@ include('../CNX/cnxon.php');
 			<div class="formulario__grupo" id="grupo__Fecha_nac">
 				<div class="row">
 					<div class="input-group">
-						<div class="formulario__grupo-input">		
+						<div class="formulario__grupo-input">	
+							<p>Fecha de nacimiento:</p>	
 							<input type="date" class="formulario__input" id="Fecha_nac" name="Fecha_nac" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="Fecha_nac">Fecha de nacimiento:</label>
+							<label for="Fecha_nac"></label>
 						</div>
 					
 					<p class="formulario__input-error">Solo puede contener formato fecha.</p>	
@@ -312,6 +302,13 @@ include('../CNX/cnxon.php');
 				</div>
 			</div>
 
+
+
+	
+<fieldset>
+<legend>Padecimiento Principal</legend>
+<br>
+<br>
 			<!--Grupo: Cat. CIE-10 -->
 			<div class="formulario__grupo" id="grupo__Padecimiento_Principal">
 				<div class="row">
@@ -341,33 +338,38 @@ include('../CNX/cnxon.php');
 									</script>
 
 						  			<i class="formulario__validacion-estado fas fa-times-circle"></i>
-									<label for="CIE10">Padecimiento principal:</label>
+									<label for="CIE10">Busqueda por palabras clave:</label>
 									
 								</div>
 							</div>
 						<div class="row">
 							<div>
 	  							<!--input type="submit" onclick = "this.form.action = 'cat_cie_10_Result.php'; this.form.submit()" name="search" value="Buscar...1" class="styled-button-8" /-->
-								<a href="#" class="hero__cta">Buscar</a>
-
+								<a href="#" class="hero__cta">Buscar</a> 
+								
+								
 							</div>
 	  					</div>
-						
+	
 					</div>
 						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
 					</div>
 				</div>
 			</div>
+			
 
 
+
+		
 			<!--Grupo: CIE-10 Id -->
 			<div class="formulario__grupo" id="grupo__CIE_10_Id">
 				<div class="row">
 					<div class="input-group">
-						<div class="formulario__grupo-input">				
-							<input type="text" class="formulario__input" id="cie_10_id" name="cie_10_id" required>
+						<div class="formulario__grupo-input">
+							<p>Código CIE 10:</p>				
+							<input type="text" class="formulario__input" id="cie_10_id" name="cie_10_id"  readonly required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="cie_10_id">CIE 10:</label>
+							<label for="cie_10_id"></label>
 						</div>
 						
 					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
@@ -379,10 +381,31 @@ include('../CNX/cnxon.php');
 			<div class="formulario__grupo" id="grupo__CIE_10_Descripcion">
 				<div class="row">
 					<div class="input-group">
-						<div class="formulario__grupo-input">				
-							<input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required>
+						<div class="formulario__grupo-input">	
+							<textarea class="estilotextarea" id="cie_10_desc" name="cie_10_desc" rows="5" readonly></textarea>			
+							<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
-							<label for="cie_10_desc">Descripción:</label>
+							<!--label for="cie_10_desc">Descripción:</label-->
+						</div>
+						
+					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+					</div>
+				</div>
+			</div>
+			</fieldset>
+
+
+			<fieldset>
+			<legend>Padecimiento Secundario</legend>
+			<br>
+
+			<!--Grupo: Check Box Padecimiento secundario -->
+			<div class="formulario__grupo" id="grupo__CheckBoxSecundario">
+				<div class="row">
+					<div class="input-group">
+						<div class="formulario__grupo-input">				
+							<label><input type="checkbox" name="cb-Padecimiento_Secundario" id="cb-Padecimiento_Secundario"> Buscar Padecimiento Secundario</label><br>
+							
 						</div>
 						
 					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
@@ -390,13 +413,52 @@ include('../CNX/cnxon.php');
 				</div>
 			</div>
 
+			<br>
+			<!--Grupo: Cat. CIE-10 -->
+			<div class="formulario__grupo" id="grupo__Padecimiento_Secundario">
+			<!--Grupo: CIE-10 Id -->
+				<div class="formulario__grupo" id="grupo__CIE_10_Id_secundario">
+					<div class="row">
+						<div class="input-group">
+							<div class="formulario__grupo-input">
+								<p>Código CIE 10:</p>				
+								<input type="text" class="formulario__input" id="cie_10_id_2" name="cie_10_id_2"  readonly required>
+								<i class="formulario__validacion-estado fas fa-times-circle"></i>
+								<label for="cie_10_id"></label>
+							</div>
+							
+						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+						</div>
+					</div>
+				</div>
+
+				<!--Grupo: CIE-10 Descripción -->
+				<div class="formulario__grupo" id="grupo__CIE_10_Descripcion_2">
+					<div class="row">
+						<div class="input-group">
+							<div class="formulario__grupo-input">	
+								<textarea class="estilotextarea" id="cie_10_desc_2" name="cie_10_desc_2" rows="5" readonly></textarea>			
+								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
+								<i class="formulario__validacion-estado fas fa-times-circle"></i>
+								<!--label for="cie_10_desc">Descripción:</label-->
+							</div>
+							
+						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+						</div>
+					</div>
+				</div>
+			</div>	
+			</fieldset>
+			
+
+									<br>
 			<div class="formulario__grupo formulario__grupo-btn-enviar">
 				<div class="row">
 					<input type="submit" value = Guardar class="styled-button-8"/>
 					<p class="formulario__mensaje-exito" id="formulario__mensaje-exito">¡Formulario enviado exitosamente!</p>
 				</div>
 			</div>	
-	
+			
 </div>
 
 
