@@ -3,14 +3,19 @@ const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.modal__close');
 
 
-    var tabla = document.createElement("table");
-	tabla.setAttribute("id", "tabla_CIE_10");
+    //var tabla = document.createElement("table");
+	//tabla.setAttribute("id", "tabla_CIE_10");
 
 openModal.addEventListener('click', (e)=>{
-    e.preventDefault();
-    modal.classList.add('modal--show');
-    ContenidoTabla();
 
+
+    e.preventDefault();
+
+
+    modal.classList.add('modal--show');
+
+    ContenidoTabla();
+ 
 });
 
 
@@ -25,8 +30,10 @@ closeModal.addEventListener('click', (e)=>{
 
 
 function ContenidoTabla() {
-    var tabla = document.getElementById("tabla_CIE_10");
 
+
+    var tabla = document.getElementById("tabla_CIE_10");
+    
     tabla.addEventListener("click", function(event) {
         if (event.target.tagName === "TD") {
             var celdas = tabla.getElementsByTagName("td");
@@ -56,5 +63,11 @@ function ContenidoTabla() {
             }
 
         }
+
+            // Borrar el contenido de input
+            var input = document.getElementById("CIE10");
+
+            // Establece el valor del input a una cadena vacía
+            input.value = "";
     });
 }

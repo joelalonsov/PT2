@@ -326,13 +326,24 @@ include('../CNX/cnxon.php');
 										
 										console.log(cie_10);
 
-										
-										
+
+										var elemento = document.getElementById("tabla_CIE_10");
+										if (elemento ?? false) {
+											// El elemento no existe
+											var tabla = document.createElement("table");
+											tabla.setAttribute("id", "tabla_CIE_10");
+											document.body.appendChild(tabla);
+										} else {
+											// El elemento existe
+											console.log("Existe");
+
+										}
+
 										fetch('tabla_cie.php?cie__10='+cie_10)
-											.then(response=>response.text())
-											.then(value=>{
-												document.getElementById('carga_tabla').innerHTML=value
-											});
+												.then(response=>response.text())
+												.then(value=>{
+													document.getElementById('carga_tabla').innerHTML=value
+												});
 
 										}
 									</script>
