@@ -125,10 +125,6 @@ main {
 	grid-column: span 2;
 }
 
-.formulario_busqueda{
-	grid-column: span 2;
-}
-
 .formulario__grupo-terminos{
 	grid-column: span 1;
 }

@@ -27,8 +27,6 @@ include('../CNX/cnxon.php');
 </head>
 <body>
 
-
-
 <div id="horizontal_menu" class="sidebar">
 <img src="../Imagenes/logo.png" alt="logo"/>
 <h1>Prescripción</h1>
@@ -69,56 +67,20 @@ include('../CNX/cnxon.php');
 			
 		</ul>
 </nav>
-<!--script src="js/scripts.js"></script-->
-
-<!-- Página original abajo:-->
-
 
 <section class="modal ">
 	<div class="modal__container">
-			<!--img src="../Imagenes/modal.svg" class="modal__img"-->
-
-
-
-			<h2 class="modal__title">Catálogo CIE-10</h2>
-
 			
+			<h2 class="modal__title">Catálogo CIE-10</h2>
 
 			<p id="carga_tabla">
 				</table>
-
-		
 			</p>
-			<script>
-				//var tabla = document.createElement("table");
-				//tabla.setAttribute("id", "tabla_CIE_10");
-				//document.body.appendChild(tabla_CIE_10);
-			</script>
-			
-			<!--p class="modal_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus suscipit odio nulla 
-				esse repellat labore animi iure natus, obcaecati quis nesciunt, eius quos possimus quasi quibusdam laudantium 
-				alias sint. Eius.</p-->
-				<a href="#" class="modal__close">Cerrar</a>
+
+			<a href="#" class="modal__close">Cerrar</a>
 	</div>	
 </section>
 
-
-<!--
-<h1>Ventana Modal</h1>
-<a href="modal" id="show-modal">Abrir Ventana</a>
-
-<aside id="modal" class="modal">
-	<div class="content-modal">
-		<header>
-			<a href="#" class="close-modal">X</a>
-			<h2>Buen Trabajo!</h2>
-		</header>
-		<article></article>
-	</div>
-	<a href="#" class="btn-close-modal"></a>
-</aside>
-
--->
 
 <div class="contenedor">
 	<br>
@@ -150,6 +112,7 @@ include('../CNX/cnxon.php');
 					</div>
 				</div>
 			</div>
+
 			<!--Contraseña 1-->
 			<div class="formulario__grupo" id="grupo__Nombre">
 				<div class="row">
@@ -305,7 +268,7 @@ include('../CNX/cnxon.php');
 
 <h3>Padecimiento  CIE-10</h3> <br>
 	
-<fieldset class = "formulario_busqueda">
+<!--fieldset-->
 <!--Grupo: Busqueda por CIE-10 -->
 <br><br>
 <div class="formulario__grupo" id="grupo__Ritmo_Cardiaco">
@@ -313,7 +276,7 @@ include('../CNX/cnxon.php');
 					<div class="input-group">
 						<div class="formulario__grupo-input">				
 							
-						<input type="text" class="formulario__input" name="CIE10" id="CIE10" onchange="llena_tabla()" required>
+						<input type="text" class="formulario__input" name="CIE10" id="CIE10" onchange="llena_tabla()" >
 
 				<script type=text/javascript>
 					function llena_tabla(){
@@ -424,7 +387,9 @@ include('../CNX/cnxon.php');
 				</div>
 			</div>
 			
-</fieldset>	
+<!--/fieldset-->	
+
+
 
 <fieldset>
 <legend>Padecimiento Principal</legend>
