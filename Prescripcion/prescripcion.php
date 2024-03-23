@@ -123,7 +123,7 @@ include('../CNX/cnxon.php');
 <div class="contenedor">
 	<br>
 	
-	    <div class="title" align="center">Datos del Paciente</div>
+	    <div class="title" align="center"><h3>Datos del Paciente</h3></div>
 		<br>
 		
 <body>
@@ -303,75 +303,133 @@ include('../CNX/cnxon.php');
 			</div>
 
 
-
+<h3>Padecimiento  CIE-10</h3> <br>
 	
-<fieldset>
-<legend>Padecimiento Principal</legend>
-<br>
-<br>
-			<!--Grupo: Cat. CIE-10 -->
-			<div class="formulario__grupo" id="grupo__Padecimiento_Principal">
+<fieldset class = "formulario_busqueda">
+<!--Grupo: Busqueda por CIE-10 -->
+<br><br>
+<div class="formulario__grupo" id="grupo__Ritmo_Cardiaco">
 				<div class="row">
 					<div class="input-group">
 						<div class="formulario__grupo-input">				
-							<div class="row">
-          
-								<div class="input-group">
+							
+						<input type="text" class="formulario__input" name="CIE10" id="CIE10" onchange="llena_tabla()" required>
 
-									<input type="text" class="formulario__input" name="CIE10" id="CIE10" onchange="llena_tabla()" required>
-
-									<script type=text/javascript>
-										function llena_tabla(){
-											let cie_10=document.getElementById("CIE10").value;	
-										
-										console.log(cie_10);
+				<script type=text/javascript>
+					function llena_tabla(){
+						let cie_10=document.getElementById("CIE10").value;	
+					
+					console.log(cie_10);
 
 
-										var elemento = document.getElementById("tabla_CIE_10");
-										if (elemento ?? false) {
-											// El elemento no existe
-											var tabla = document.createElement("table");
-											tabla.setAttribute("id", "tabla_CIE_10");
-											document.body.appendChild(tabla);
-										} else {
-											// El elemento existe
-											console.log("Existe");
+					var elemento = document.getElementById("tabla_CIE_10");
+					if (elemento==null) {
+						// El elemento no existe
+						console.log("No Existe");
+						var tabla = document.createElement("table");
+						tabla.setAttribute("id", "tabla_CIE_10");
+						document.body.appendChild(tabla);
+					} else {
+						// El elemento existe
+						console.log("Existe ¿Pero donde se crea?");
 
-										}
+					}
+					
+					fetch('tabla_cie.php?cie__10='+cie_10)
+							.then(response=>response.text())
+							.then(value=>{
+								document.getElementById('carga_tabla').innerHTML=value
+								ContenidoTabla();
+							});
 
-										fetch('tabla_cie.php?cie__10='+cie_10)
-												.then(response=>response.text())
-												.then(value=>{
-													document.getElementById('carga_tabla').innerHTML=value
-												});
+					}
+					
 
-										}
-									</script>
+					function ContenidoTabla() {
 
-						  			<i class="formulario__validacion-estado fas fa-times-circle"></i>
-									<label for="CIE10">Busqueda por palabras clave:</label>
-									
-								</div>
-							</div>
-						<div class="row">
-							<div>
-	  							<!--input type="submit" onclick = "this.form.action = 'cat_cie_10_Result.php'; this.form.submit()" name="search" value="Buscar...1" class="styled-button-8" /-->
-								<a href="#" class="hero__cta">Buscar</a> 
-								
-								
-							</div>
-	  					</div>
-	
+
+							var tabla = document.getElementById("tabla_CIE_10");
+
+
+
+							if(tabla){
+
+							tabla.addEventListener("click", function(event) {
+								if (event.target.tagName === "TD") {
+									var celdas = tabla.getElementsByTagName("td");
+									for (var i = 0; i < celdas.length; i++) {
+										celdas[i].classList.remove("selected");
+									}
+
+									event.target.classList.add("selected");
+
+									var fila = event.target.parentNode; // Obtener la fila que contiene la celda seleccionada
+									var contenidoCelda1 = fila.cells[0].textContent; // Contenido de la primera celda en la fila
+									var contenidoCelda2 = fila.cells[1].textContent; // Contenido de la segunda celda en la fila
+
+									console.log("Contenido de la primera celda en la fila:", contenidoCelda1);
+									console.log("Contenido de la segunda celda en la fila:", contenidoCelda2);
+
+									// Obtener la casilla de verificación por su ID
+									var checkbox = document.getElementById('cb-Padecimiento_Secundario');
+
+									// Verificar si está seleccionada
+									if (checkbox.checked) {
+										document.getElementById('cie_10_id_2').value = contenidoCelda1;
+										document.getElementById('cie_10_desc_2').value = contenidoCelda2;
+									} else {
+										document.getElementById('cie_10_id').value = contenidoCelda1;
+										document.getElementById('cie_10_desc').value = contenidoCelda2;
+									}
+
+								}
+
+									// Borrar el contenido de input
+									var input = document.getElementById("CIE10");
+
+									// Establece el valor del input a una cadena vacía
+									input.value = "";
+							});
+							}
+
+							}
+
+			</script>
+
+  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+  
+	<label for="CIE10">Busqueda por palabras clave:</label>	
+
+						</div>
+						
+					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
 					</div>
-						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+				</div>
+			</div>
+		
+			<!--Grupo: vacío -->
+			<div class="formulario__grupo" id="grupo__vacio">
+				<div class="row">
+					<div class="input-group">
+						<div class="formulario__grupo-input">				
+						<a href="#" class="hero__cta">Buscar</a> 
+						</div>
+						<div class="formulario__grupo-input">				
+							<label><input type="checkbox" name="cb-Padecimiento_Secundario" id="cb-Padecimiento_Secundario"> Padecimiento Secundario</label><br>
+							
+						</div>
+						
+					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
 					</div>
 				</div>
 			</div>
 			
+</fieldset>	
 
+<fieldset>
+<legend>Padecimiento Principal</legend>
 
-
-		
+	
 			<!--Grupo: CIE-10 Id -->
 			<div class="formulario__grupo" id="grupo__CIE_10_Id">
 				<div class="row">
@@ -408,23 +466,12 @@ include('../CNX/cnxon.php');
 
 			<fieldset>
 			<legend>Padecimiento Secundario</legend>
-			<br>
+			
 
 			<!--Grupo: Check Box Padecimiento secundario -->
-			<div class="formulario__grupo" id="grupo__CheckBoxSecundario">
-				<div class="row">
-					<div class="input-group">
-						<div class="formulario__grupo-input">				
-							<label><input type="checkbox" name="cb-Padecimiento_Secundario" id="cb-Padecimiento_Secundario"> Buscar Padecimiento Secundario</label><br>
-							
-						</div>
-						
-					<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
-					</div>
-				</div>
-			</div>
+			
 
-			<br>
+			
 			<!--Grupo: Cat. CIE-10 -->
 			<div class="formulario__grupo" id="grupo__Padecimiento_Secundario">
 			<!--Grupo: CIE-10 Id -->
@@ -485,12 +532,13 @@ include('../CNX/cnxon.php');
 
 	</main>
 	<script src="js/formulario.js"></script>
-	<script src="js/main.js"></script>
+	
 	<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-
+	<script src="js/main.js" ></script>	
 	<!--script src="../js/scripts.js"></script-->
 
 
 
 </body>
+
 </html>

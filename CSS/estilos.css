@@ -22,6 +22,7 @@ main {
 	transform: translate(20%,0);
 }
 
+
 .formulario {
 	
 	display: grid;
@@ -121,6 +122,10 @@ main {
  
 .formulario__mensaje,
 .formulario__grupo-btn-enviar {
+	grid-column: span 2;
+}
+
+.formulario_busqueda{
 	grid-column: span 2;
 }
 

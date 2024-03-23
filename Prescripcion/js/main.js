@@ -7,14 +7,16 @@ const closeModal = document.querySelector('.modal__close');
 	//tabla.setAttribute("id", "tabla_CIE_10");
 
 openModal.addEventListener('click', (e)=>{
-
+ 
 
     e.preventDefault();
 
-
+    
     modal.classList.add('modal--show');
-
     ContenidoTabla();
+   
+    
+    
  
 });
 
@@ -33,7 +35,11 @@ function ContenidoTabla() {
 
 
     var tabla = document.getElementById("tabla_CIE_10");
-    
+
+
+
+    if(tabla){
+
     tabla.addEventListener("click", function(event) {
         if (event.target.tagName === "TD") {
             var celdas = tabla.getElementsByTagName("td");
@@ -70,4 +76,6 @@ function ContenidoTabla() {
             // Establece el valor del input a una cadena vacía
             input.value = "";
     });
+}
+
 }
