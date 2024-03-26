@@ -22,7 +22,7 @@
 try{
     include('../CNX/cnxon.php');
     $pdoQuery_1 = $conn-> prepare("SELECT `str_clave`, `str_nombre_Generico`,`str_Descripcion`, `str_cantidad`,`str_presentacion`,
-    `str_Grupo`,`str_indicaciones`,`str_ViaAdmonyDosis`,`str_generalidades`,`str_efectos_adversos`,`str_contraindicaciones`,`str_interacciones`
+    `str_Grupo`,`str_indicaciones`,`str_ViaAdmonyDosis`,`str_generalidades`,`str_efectos_adversos`,`str_contraindicaciones`,`str_interacciones`, `int_IdMedicamento`
      FROM `tbl_medicamentos` WHERE `str_nombre_Generico` LIKE '%".$_GET['medicamento']."%' ORDER BY `int_IdMedicamento` ASC");
     $pdoQuery_1->execute();
 
@@ -69,6 +69,10 @@ try{
         echo '</td>';
         echo '<td id="r'.$renglon.'12">'; 
         echo $reg['str_interacciones'];
+        echo '</td>';
+
+        echo '<td id="r'.$renglon.'13">'; 
+        echo $reg['int_IdMedicamento'];
         echo '</td>';
                  
         echo '</tr>';

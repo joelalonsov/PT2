@@ -533,7 +533,8 @@ include('../CNX/cnxon.php');
 												var contenidoCelda3 = fila.cells[2].textContent; // Contenido de la primera celda en la fila
 												var contenidoCelda4 = fila.cells[3].textContent; // Contenido de la segunda celda en la fila
 												var contenidoCelda5 = fila.cells[4].textContent; // Contenido de la primera celda en la fila
-	
+												var contenidoCelda6 = fila.cells[12].textContent; // Contenido de la primera celda en la fila
+
 												console.log("Contenido de la primera celda en la fila:", contenidoCelda1);
 												console.log("Contenido de la segunda celda en la fila:", contenidoCelda2);
 	
@@ -549,6 +550,7 @@ include('../CNX/cnxon.php');
 													document.getElementById('Medicamento_Descripcion_1').value = contenidoCelda3;
 													document.getElementById('Medicamento_Cantidad_1').value = contenidoCelda4;
 													document.getElementById('Medicamento_Presentacion_1').value = contenidoCelda5;
+													document.getElementById('Medicamento_Id_1').value = contenidoCelda6;
 													
 												} else if (radio2.checked) {
 													document.getElementById('Medicamento_Codigo_2').value = contenidoCelda1;
@@ -556,6 +558,7 @@ include('../CNX/cnxon.php');
 													document.getElementById('Medicamento_Descripcion_2').value = contenidoCelda3;
 													document.getElementById('Medicamento_Cantidad_2').value = contenidoCelda4;
 													document.getElementById('Medicamento_Presentacion_2').value = contenidoCelda5;
+													document.getElementById('Medicamento_Id_2').value = contenidoCelda6;
 
 												} else{
 													document.getElementById('Medicamento_Codigo_3').value = contenidoCelda1;
@@ -563,6 +566,7 @@ include('../CNX/cnxon.php');
 													document.getElementById('Medicamento_Descripcion_3').value = contenidoCelda3;
 													document.getElementById('Medicamento_Cantidad_3').value = contenidoCelda4;
 													document.getElementById('Medicamento_Presentacion_3').value = contenidoCelda5;
+													document.getElementById('Medicamento_Id_3').value = contenidoCelda6;
 
 												}
 											}
@@ -624,6 +628,23 @@ include('../CNX/cnxon.php');
 
 			
 			<!--Grupo: Medicamento Código -->
+
+				<!--div class="formulario__grupo" id="grupo__Medicamento_1"-->
+				<div class="formulario__grupo" id="grupo__Medicamento_Id_1">
+					<div class="row">
+						<div class="input-group">
+							<div class="formulario__grupo-input">
+											
+								<input type="hidden" class="formulario__input" id="Medicamento_Id_1" name="Medicamento_Id_1"  readonly required>
+								<i class="formulario__validacion-estado fas fa-times-circle"></i>
+								<!--label for="Medicamento_Codigo"></label-->
+							</div>
+							
+						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+						</div>
+					</div>
+				</div>
+
 			<!--div class="formulario__grupo" id="grupo__Medicamento_1"-->
 				<div class="formulario__grupo" id="grupo__Medicamento_Codigo_1">
 					<div class="row">
@@ -722,6 +743,23 @@ include('../CNX/cnxon.php');
 
 			
 			<!--Grupo: Medicamento Código -->
+
+				<!--div class="formulario__grupo" id="grupo__Medicamento_1"-->
+				<div class="formulario__grupo" id="grupo__Medicamento_Id_2">
+					<div class="row">
+						<div class="input-group">
+							<div class="formulario__grupo-input">
+											
+								<input type="hidden" class="formulario__input" id="Medicamento_Id_2" name="Medicamento_Id_2"  readonly required>
+								<i class="formulario__validacion-estado fas fa-times-circle"></i>
+								<!--label for="Medicamento_Codigo"></label-->
+							</div>
+							
+						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+						</div>
+					</div>
+				</div>
+
 			<!--div class="formulario__grupo" id="grupo__Medicamento_1"-->
 				<div class="formulario__grupo" id="grupo__Medicamento_Codigo_2">
 					<div class="row">
@@ -820,6 +858,24 @@ include('../CNX/cnxon.php');
 
 			
 			<!--Grupo: Medicamento Código -->
+
+
+				<!--div class="formulario__grupo" id="grupo__Medicamento_1"-->
+				<div class="formulario__grupo" id="grupo__Medicamento_Id_3">
+					<div class="row">
+						<div class="input-group">
+							<div class="formulario__grupo-input">
+										
+								<input type="hidden" class="formulario__input" id="Medicamento_Id_3" name="Medicamento_Id_3"  readonly required>
+								<i class="formulario__validacion-estado fas fa-times-circle"></i>
+								<!--label for="Medicamento_Codigo"></label-->
+							</div>
+							
+						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
+						</div>
+					</div>
+				</div>
+
 			<!--div class="formulario__grupo" id="grupo__Medicamento_1"-->
 				<div class="formulario__grupo" id="grupo__Medicamento_Codigo_3">
 					<div class="row">
