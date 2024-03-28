@@ -32,38 +32,39 @@ setlocale(LC_ALL,'es_ES');
 <img src="../Imagenes/LogoDiSur_1.png" alt="campusMVP" style="border-width: 0px" width="100"/>
 <h1><face="verdana"
           color="darkgray">Prescripción - Modifica registro</h1>
-		  <nav class="menuCSS3">
+		  
+<nav class="menuCSS3">
 
-			<div id="toggle-menu" class="toggle-menu">
+		<div id="toggle-menu" class="toggle-menu">
+			
+			<label for="toggle-menu-checkbox">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</div>
+
+		<input type="checkbox" class="toggle-menu__checkbox" id="toggle-menu-checkbox"/>
+
+		<ul id="main-menu" class ="main-menu">
+			<li class="main-menu__item"><a class="active" href="../Index.php"> Inicio</a></li>
+			<li class="main-menu__item"><a href="#">Prescripción</a>
+				<ul>
+					<li class="item-son1"><a href="prescripcion.php"> Nueva</a></li>
+					<li class="item-son1"><a href="consulta_pacientes.php">Consulta</a></li>
+				</ul>
+			</li>
+			<li class="main-menu__item"><a href="#">Catálogos</a>
+				<ul>
+					<li class="item-son1"><a href="../Configuracion/Catalogos/Prescripcion/cat_cie_10.php">CIE-10</a></li>
+					<li class="item-son1"><a href="#">Dispensación</a></li>
+					<li class="item-son1"><a href="#">Control de Inventario</a></li>
+					<li class="item-son1"><a href="#">Recursos Materiales</a></li>
+				</ul>
+			</li>
+			<li class="main-menu__item"><a href="../funciones/destruir.php"> Salir </a>
 				
-				<label for="toggle-menu-checkbox">
-					<i class="fa fa-bars" aria-hidden="true"></i>
-				</label>
-			</div>
-
-			<input type="checkbox" class="toggle-menu__checkbox" id="toggle-menu-checkbox"/>
-
-			<ul id="main-menu" class ="main-menu">
-				<li class="main-menu__item"><a class="active" href="../Index.php"> Inicio</a></li>
-				<li class="main-menu__item"><a href="#">Usuarios</a>
-					<ul>
-						<li class="item-son1"><a href="Usuarios/alta_usuarios.php"> Alta de Usuarios</a></li>
-						<li class="item-son1"><a href="Usuarios/consulta_usuarios.php">Consulta de Usuarios</a></li>
-					</ul>
-				</li>
-				<li class="main-menu__item"><a href="#">Catálogos</a>
-					<ul>
-						<li class="item-son1"><a href="../Configuracion/Catalogos/Prescripcion/cat_cie_10.php">Prescripción</a></li>
-						<li class="item-son1"><a href="#">Dispensación</a></li>
-						<li class="item-son1"><a href="#">Control de Inventario</a></li>
-						<li class="item-son1"><a href="#">Recursos Materiales</a></li>
-					</ul>
-				</li>
-				<li class="main-menu__item"><a href="../funciones/destruir.php"> Salir </a>
-					
-				</li>
-				
-			</ul>
+			</li>
+			
+		</ul>
 </nav>
 
 
@@ -110,7 +111,25 @@ setlocale(LC_ALL,'es_ES');
         try{
             include('../CNX/cnxon.php');
         
-            $pdoQuery_1 = $conn-> prepare("SELECT * FROM `tbl_prescripcion` WHERE id_receta= $_REQUEST[ID]");
+            $pdoQuery_1 = $conn-> prepare("SELECT id_receta, folio, pac_nombre, pac_A_paterno, pac_A_materno, fecha_nac, temperatura, presion, peso, estatura,
+			frecuencia_resp, ritmo_card, padecimiento_1,  (SELECT `nombre` FROM `cat_cie_10` WHERE consecutivo = p.padecimiento_1) as nombre_cie10_1, padecimiento_2,
+			(SELECT `nombre` FROM `cat_cie_10` WHERE consecutivo = p.padecimiento_2) as nombre_cie10_2, 
+			medicamento_1, (SELECT str_nombre_generico FROM tbl_medicamentos WHERE int_IdMedicamento = medicamento_1) as nombre_med_1,
+			(SELECT str_clave FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_1) as clave_med_1,
+			(SELECT str_descripcion FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_1) as desc_med_1,
+			(SELECT str_cantidad FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_1) as cant_med_1,
+			(SELECT str_presentacion FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_1) as presentacion_med_1,
+			medicamento_2, (SELECT str_nombre_generico FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_2) as nombre_med_2,
+			(SELECT str_clave FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_2) as clave_med_2,
+			(SELECT str_descripcion FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_2) as desc_med_2,
+			(SELECT str_cantidad FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_2) as cant_med_2,
+			(SELECT str_presentacion FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_2) as presentacion_med_2,
+			medicamento_3, (SELECT str_nombre_generico FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_3) as nombre_med_3,
+			(SELECT str_clave FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_3) as clave_med_3,
+			(SELECT str_descripcion FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_3) as desc_med_3,
+			(SELECT str_cantidad FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_3) as cant_med_3,
+			(SELECT str_presentacion FROM tbl_medicamentos WHERE int_IdMedicamento = p.medicamento_3) as presentacion_med_3  
+			FROM `tbl_prescripcion` p WHERE id_receta= $_REQUEST[ID]");
             $pdoQuery_1->execute();
             $reg=$pdoQuery_1->fetch(PDO::FETCH_ASSOC);
         }catch (Excepton $e){
@@ -205,7 +224,8 @@ setlocale(LC_ALL,'es_ES');
 			<div class="formulario__grupo" id="grupo__Fecha_nac">	
 				<div class="row">
 					<div class="input-group">
-						<div class="formulario__grupo-input">		
+						<div class="formulario__grupo-input">	
+							<p>Fecha de Nacimiento</p>	
 							<input type="date-local" id="Fecha_nac" name="Fecha_nac" class="formulario__input" value="<?php echo date("d M,Y", strtotime($reg['fecha_nac'])); ?>" required>
 							<i class="formulario__validacion-estado fas fa-times-circle"></i>
 							<label for="Fecha_nac"></label>
@@ -425,7 +445,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Código CIE 10:</p>				
-								<input type="text" class="formulario__input" id="cie_10_id" name="cie_10_id"  readonly required>
+								<input type="text" class="formulario__input" id="cie_10_id" name="cie_10_id" value="<?php echo $reg['padecimiento_1']; ?>" readonly>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<label for="cie_10_id"></label>
 							</div>
@@ -440,7 +460,7 @@ setlocale(LC_ALL,'es_ES');
 					<div class="row">
 						<div class="input-group">
 							<div class="formulario__grupo-input">	
-								<textarea class="estilotextarea" id="cie_10_desc" name="cie_10_desc" rows="5" readonly></textarea>			
+								<textarea class="estilotextarea" id="cie_10_desc" name="cie_10_desc" rows="5" readonly><?php echo $reg['nombre_cie10_1']; ?></textarea>		
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -469,7 +489,7 @@ setlocale(LC_ALL,'es_ES');
 							<div class="input-group">
 								<div class="formulario__grupo-input">
 									<p>Código CIE 10:</p>				
-									<input type="text" class="formulario__input" id="cie_10_id_2" name="cie_10_id_2"  readonly required>
+									<input type="text" class="formulario__input" id="cie_10_id_2" name="cie_10_id_2" value="<?php echo $reg['padecimiento_2']; ?>" readonly required>
 									<i class="formulario__validacion-estado fas fa-times-circle"></i>
 									<label for="cie_10_id"></label>
 								</div>
@@ -484,7 +504,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="row">
 							<div class="input-group">
 								<div class="formulario__grupo-input">	
-									<textarea class="estilotextarea" id="cie_10_desc_2" name="cie_10_desc_2" rows="5" readonly></textarea>			
+									<textarea class="estilotextarea" id="cie_10_desc_2" name="cie_10_desc_2" rows="5" readonly><?php echo $reg['nombre_cie10_2']; ?></textarea>			
 									<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 									<i class="formulario__validacion-estado fas fa-times-circle"></i>
 									<!--label for="cie_10_desc">Descripción:</label-->
@@ -658,7 +678,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 											
-								<input type="hidden" class="formulario__input" id="Medicamento_Id_1" name="Medicamento_Id_1"  readonly required>
+								<input type="hidden" class="formulario__input" id="Medicamento_Id_1" name="Medicamento_Id_1" value="<?php echo $reg['medicamento_1']; ?>" readonly >
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="Medicamento_Codigo"></label-->
 							</div>
@@ -674,7 +694,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Clave:</p>				
-								<input type="text" class="formulario__input" id="Medicamento_Codigo_1" name="Medicamento_Codigo_1"  readonly required>
+								<input type="text" class="formulario__input" id="Medicamento_Codigo_1" name="Medicamento_Codigo_1" value="<?php echo $reg['clave_med_1']; ?>" readonly>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="Medicamento_Codigo"></label-->
 							</div>
@@ -690,7 +710,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Nombre:</p>	
-								<input type="text" class="formulario__input" id="Medicamento_Nombre_1" name="Medicamento_Nombre_1" rows="5" readonly>			
+								<input type="text" class="formulario__input" id="Medicamento_Nombre_1" name="Medicamento_Nombre_1" rows="5" value="<?php echo $reg['nombre_med_1']; ?>" readonly>			
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Nombre:</label-->
 							</div>
@@ -707,10 +727,10 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Descripción:</p>	
-								<textarea class="estilotextarea" id="Medicamento_Descripcion_1" name="Medicamento_Descripcion_1" rows="5" readonly></textarea>			
+								<textarea class="estilotextarea" id="Medicamento_Descripcion_1" name="Medicamento_Descripcion_1" rows="5" readonly><?php echo $reg['desc_med_1']; ?></textarea>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
-								<!--label for="cie_10_desc">Descripción:</label-->
+								<!--label for="cie_10_desc">Descripción:</label-->desc_med_1
 							</div>
 							
 						<p class="formulario__input-error">Solo puede contener hasta tres digitos..</p>	
@@ -725,7 +745,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Cantidad:</p>	
-								<input type="text"  class="formulario__input" id="Medicamento_Cantidad_1" name="Medicamento_Cantidad_1" rows="5" readonly>			
+								<input type="text"  class="formulario__input" id="Medicamento_Cantidad_1" name="Medicamento_Cantidad_1" value="<?php echo $reg['cant_med_1']; ?>" rows="5" readonly>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -743,7 +763,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">	
 								<p>Presentación:</p>
-								<input type="text"  class="formulario__input" id="Medicamento_Presentacion_1" name="Medicamento_Presentacion_1" rows="5" readonly>			
+								<input type="text"  class="formulario__input" id="Medicamento_Presentacion_1" name="Medicamento_Presentacion_1" value="<?php echo $reg['presentacion_med_1']; ?>" rows="5" readonly>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -773,7 +793,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 											
-								<input type="hidden" class="formulario__input" id="Medicamento_Id_2" name="Medicamento_Id_2"  readonly required>
+								<input type="hidden" class="formulario__input" id="Medicamento_Id_2" name="Medicamento_Id_2" value="<?php echo $reg['medicamento_2']; ?>" readonly >
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="Medicamento_Codigo"></label-->
 							</div>
@@ -789,7 +809,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Clave:</p>				
-								<input type="text" class="formulario__input" id="Medicamento_Codigo_2" name="Medicamento_Codigo_2"  readonly required>
+								<input type="text" class="formulario__input" id="Medicamento_Codigo_2" name="Medicamento_Codigo_2" value="<?php echo $reg['clave_med_2']; ?>" readonly required>
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="Medicamento_Codigo"></label-->
 							</div>
@@ -805,7 +825,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Nombre:</p>	
-								<input type="text" class="formulario__input" id="Medicamento_Nombre_2" name="Medicamento_Nombre_2" readonly>			
+								<input type="text" class="formulario__input" id="Medicamento_Nombre_2" name="Medicamento_Nombre_2" value="<?php echo $reg['nombre_med_2']; ?>" readonly>			
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Nombre:</label-->
 							</div>
@@ -822,7 +842,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Descripción:</p>	
-								<textarea class="estilotextarea" id="Medicamento_Descripcion_2" name="Medicamento_Descripcion_2" rows="5" readonly></textarea>			
+								<textarea class="estilotextarea" id="Medicamento_Descripcion_2" name="Medicamento_Descripcion_2" rows="5" readonly><?php echo $reg['desc_med_2']; ?></textarea>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -840,7 +860,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Cantidad:</p>	
-								<input type="text"  class="formulario__input" id="Medicamento_Cantidad_2" name="Medicamento_Cantidad_2" readonly>			
+								<input type="text"  class="formulario__input" id="Medicamento_Cantidad_2" name="Medicamento_Cantidad_2" value="<?php echo $reg['cant_med_2']; ?>" readonly>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -858,7 +878,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">	
 								<p>Presentación:</p>
-								<input type="text"  class="formulario__input" id="Medicamento_Presentacion_2" name="Medicamento_Presentacion_2" readonly>			
+								<input type="text"  class="formulario__input" id="Medicamento_Presentacion_2" name="Medicamento_Presentacion_2" value="<?php echo $reg['presentacion_med_2']; ?>" readonly>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -889,7 +909,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 										
-								<input type="hidden" class="formulario__input" id="Medicamento_Id_3" name="Medicamento_Id_3"  readonly required>
+								<input type="hidden" class="formulario__input" id="Medicamento_Id_3" name="Medicamento_Id_3" value="<?php echo $reg['medicamento_3']; ?>" readonly >
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="Medicamento_Codigo"></label-->
 							</div>
@@ -905,7 +925,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Clave:</p>				
-								<input type="text" class="formulario__input" id="Medicamento_Codigo_3" name="Medicamento_Codigo_3"  readonly required>
+								<input type="text" class="formulario__input" id="Medicamento_Codigo_3" name="Medicamento_Codigo_3" value="<?php echo $reg['clave_med_3']; ?>" readonly >
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="Medicamento_Codigo"></label-->
 							</div>
@@ -921,7 +941,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Nombre:</p>	
-								<input type="text" class="formulario__input" id="Medicamento_Nombre_3" name="Medicamento_Nombre_3" readonly>			
+								<input type="text" class="formulario__input" id="Medicamento_Nombre_3" name="Medicamento_Nombre_3" value="<?php echo $reg['nombre_med_3']; ?>" readonly>			
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Nombre:</label-->
 							</div>
@@ -938,7 +958,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Descripción:</p>	
-								<textarea class="estilotextarea" id="Medicamento_Descripcion_3" name="Medicamento_Descripcion_3" rows="5" readonly></textarea>			
+								<textarea class="estilotextarea" id="Medicamento_Descripcion_3" name="Medicamento_Descripcion_3" rows="5" readonly><?php echo $reg['desc_med_2']; ?></textarea>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -956,7 +976,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">
 								<p>Cantidad:</p>	
-								<input type="text"  class="formulario__input" id="Medicamento_Cantidad_3" name="Medicamento_Cantidad_3" readonly>			
+								<input type="text"  class="formulario__input" id="Medicamento_Cantidad_3" name="Medicamento_Cantidad_3" value="<?php echo $reg['cant_med_3']; ?>" readonly>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->
@@ -974,7 +994,7 @@ setlocale(LC_ALL,'es_ES');
 						<div class="input-group">
 							<div class="formulario__grupo-input">	
 								<p>Presentación:</p>
-								<input type="text"  class="formulario__input" id="Medicamento_Presentacion_3" name="Medicamento_Presentacion_3" readonly>			
+								<input type="text"  class="formulario__input" id="Medicamento_Presentacion_3" name="Medicamento_Presentacion_3" value="<?php echo $reg['presentacion_med_3']; ?>" readonly>			
 								<!--input type="text" class="formulario__input" id="cie_10_desc" name="cie_10_desc" required-->
 								<i class="formulario__validacion-estado fas fa-times-circle"></i>
 								<!--label for="cie_10_desc">Descripción:</label-->

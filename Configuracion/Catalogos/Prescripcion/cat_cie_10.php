@@ -18,22 +18,57 @@ header('Location: ../../../Logon_1.php');
 <link rel="stylesheet" type="text/css" href="../../../CSS/estilo.css"/>
 <link rel="stylesheet" type="text/css" href="../../../CSS/forms.css"/>
 <link rel="stylesheet" type="text/css" href="../../../CSS/tabla.css"/>
+<link rel="stylesheet" type="text/css" href="../../../CSS/menu_H.css">
 
 </head>
-<body>
+
 
 
 <div id="horizontal_menu" class="sidebar">
 <img src="../../../Imagenes/LogoDiSur_1.png" alt="campusMVP" style="border-width: 0px" width="100"/>
-<h1><font size="5"
+<!--h1><font size="5"
           face="verdana"
-          color="darkgray">Herramientas de Configuración</h1>
+          color="darkgray">Herramientas de Configuración</h1-->
 
 
 </div>
-<br><br>
+
 	
 <body>
+<br><br>
+<nav class="menuCSS3">
+
+		<div id="toggle-menu" class="toggle-menu">
+			
+			<label for="toggle-menu-checkbox">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</div>
+
+		<input type="checkbox" class="toggle-menu__checkbox" id="toggle-menu-checkbox"/>
+
+		<ul id="main-menu" class ="main-menu">
+			<li class="main-menu__item"><a class="active" href="../../../Index.php"> Inicio</a></li>
+			<li class="main-menu__item"><a href="#">Prescripción</a>
+				<ul>
+					<li class="item-son1"><a href="../../../prescripcion/prescripcion.php"> Nueva</a></li>
+					<li class="item-son1"><a href="../../../prescripcion/consulta_pacientes.php">Consulta</a></li>
+				</ul>
+			</li>
+			<li class="main-menu__item"><a href="#">Catálogos</a>
+				<ul>
+					<li class="item-son1"><a href="../Configuracion/Catalogos/Prescripcion/cat_cie_10.php">CIE-10</a></li>
+					<li class="item-son1"><a href="#">Dispensación</a></li>
+					<li class="item-son1"><a href="#">Control de Inventario</a></li>
+					<li class="item-son1"><a href="#">Recursos Materiales</a></li>
+				</ul>
+			</li>
+			<li class="main-menu__item"><a href="../funciones/destruir.php"> Salir </a>
+				
+			</li>
+			
+		</ul>
+</nav>
 
 <div style="width: 1300px; height: auto overflow: scroll;" class="contenedor">
   <div class="titulo" style="font-size: 16px;">Clasificación Estadística Internacional de Enfermedades y Problemas Relacionados con la Salud, versión oficial vigente (CIE-10). 0923<br><br><br>

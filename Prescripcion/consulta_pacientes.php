@@ -13,9 +13,15 @@ header('Location: ../Logon_1.php');
 
 <link rel="stylesheet" type="text/css" href="../CSS/menu_horizontal.css">
 <link rel="stylesheet" type="text/css" href="../CSS/Input.css">
-<link rel="stylesheet" type="text/css" href="../CSS/estilo.css"/>
+<!--link rel="stylesheet" type="text/css" href="../CSS/estilo.css"/-->
 <link rel="stylesheet" type="text/css" href="../CSS/forms.css"/>
 <link rel="stylesheet" type="text/css" href="../CSS/tabla.css"/>
+
+
+<link rel="stylesheet" href="../CSS/estilos.css">
+<link rel="stylesheet" href="../CSS/menu_H.css">
+<link rel="stylesheet" href="../CSS/modal.css">
+<link rel="stylesheet" href="../CSS/modal_med.css">
 
 </head>
 <body>
@@ -23,9 +29,8 @@ header('Location: ../Logon_1.php');
 
 <div id="horizontal_menu" class="sidebar">
 <img src="../Imagenes/LogoDiSur_1.png" alt="campusMVP" style="border-width: 0px" width="100"/>
-<h1><font size="5"
-          face="verdana"
-          color="darkgray">Herramientas de Configuración</h1>
+<!--h1><font face="verdana"
+          color="darkgray">Consulta Prescripciones</h1-->
 
 
 </div>
@@ -33,8 +38,43 @@ header('Location: ../Logon_1.php');
 	
 <body>
 
+
+<nav class="menuCSS3">
+
+		<div id="toggle-menu" class="toggle-menu">
+			
+			<label for="toggle-menu-checkbox">
+				<i class="fa fa-bars" aria-hidden="true"></i>
+			</label>
+		</div>
+
+		<input type="checkbox" class="toggle-menu__checkbox" id="toggle-menu-checkbox"/>
+
+		<ul id="main-menu" class ="main-menu">
+			<li class="main-menu__item"><a class="active" href="../Index.php"> Inicio</a></li>
+			<li class="main-menu__item"><a href="#">Prescripción</a>
+				<ul>
+					<li class="item-son1"><a href="prescripcion.php"> Nueva</a></li>
+					<li class="item-son1"><a href="consulta_pacientes.php">Consulta</a></li>
+				</ul>
+			</li>
+			<li class="main-menu__item"><a href="#">Catálogos</a>
+				<ul>
+					<li class="item-son1"><a href="../Configuracion/Catalogos/Prescripcion/cat_cie_10.php">CIE-10</a></li>
+					<li class="item-son1"><a href="#">Dispensación</a></li>
+					<li class="item-son1"><a href="#">Control de Inventario</a></li>
+					<li class="item-son1"><a href="#">Recursos Materiales</a></li>
+				</ul>
+			</li>
+			<li class="main-menu__item"><a href="../funciones/destruir.php"> Salir </a>
+				
+			</li>
+			
+		</ul>
+</nav>
+
 <div style="width: 1300px; height: auto overflow: scroll;" class="contenedor">
-<div class="titulo" style="font-size: 16px;">Consulta de Usuarios</div>
+<br>
 
 <div>
     <table style="width:95%">

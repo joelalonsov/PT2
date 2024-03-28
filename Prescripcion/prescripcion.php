@@ -48,15 +48,15 @@ include('../CNX/cnxon.php');
 
 		<ul id="main-menu" class ="main-menu">
 			<li class="main-menu__item"><a class="active" href="../Index.php"> Inicio</a></li>
-			<li class="main-menu__item"><a href="#">Usuarios</a>
+			<li class="main-menu__item"><a href="#">Prescripción</a>
 				<ul>
-					<li class="item-son1"><a href="Usuarios/alta_usuarios.php"> Alta de Usuarios</a></li>
-					<li class="item-son1"><a href="Usuarios/consulta_usuarios.php">Consulta de Usuarios</a></li>
+					<li class="item-son1"><a href="prescripcion.php"> Nueva</a></li>
+					<li class="item-son1"><a href="consulta_pacientes.php">Consulta</a></li>
 				</ul>
 			</li>
 			<li class="main-menu__item"><a href="#">Catálogos</a>
 				<ul>
-					<li class="item-son1"><a href="../Configuracion/Catalogos/Prescripcion/cat_cie_10.php">Prescripción</a></li>
+					<li class="item-son1"><a href="../Configuracion/Catalogos/Prescripcion/cat_cie_10.php">CIE-10</a></li>
 					<li class="item-son1"><a href="#">Dispensación</a></li>
 					<li class="item-son1"><a href="#">Control de Inventario</a></li>
 					<li class="item-son1"><a href="#">Recursos Materiales</a></li>
