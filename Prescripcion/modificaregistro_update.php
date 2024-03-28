@@ -6,6 +6,7 @@ include('../CNX/cnxon.php');
 date_default_timezone_set(timezoneId:"America/Mexico_City");
 
 try{
+    $Id = $_REQUEST['Id_prescripcion'];
     $IFolio = $_REQUEST['Folio'];
     $INombre = $_REQUEST['Nombre'];
     $IA_Paterno = $_REQUEST['A_Paterno'];
@@ -22,25 +23,28 @@ try{
     $IMedicamento_2 = $_REQUEST['Medicamento_Id_2'];
     $IMedicamento_3 = $_REQUEST['Medicamento_Id_3'];
     $IRCard = $_REQUEST['Ritmo_Cardiaco'];
-    $ICaptura = $_SESSION['Usuario'];
+    $IModifica = $_SESSION['Usuario'];
     $IAhora =  date(format: 'Y-m-d H:i:s');
 
-$pdoQuery_2 = $conn-> prepare( "INSERT INTO `tbl_prescripcion`(`folio`, `pac_nombre`, `pac_A_paterno`, `pac_A_materno`, `fecha_nac`, `temperatura`, `presion`, `peso`, `estatura`, 
-`frecuencia_resp`, `ritmo_card`, `padecimiento_1`, `padecimiento_2`, `medicamento_1`, `medicamento_2`, `medicamento_3`, `creado_por`, `fecha_creacion`) VALUES 
-(:IFolio, :INombre, :IA_Paterno, :IA_Materno, :IFecha_nac, :ITemperatura, :IPresion_art, :IPeso, :IEstatura, :IFResp, :IRCard, :IPadecimiento_1, :IPadecimiento_2, :IMedicamento_1, 
-:IMedicamento_2, :IMedicamento_3, :ICaptura, :IAhora )");
+$pdoQuery_2 = $conn-> prepare( "UPDATE `tbl_prescripcion` SET `folio` = :IFolio, `pac_nombre` = :INombre, `pac_A_paterno` = :IA_Paterno, `pac_A_materno` = :IA_Materno, `fecha_nac` = :IFecha_nac,
+ `temperatura` = :ITemperatura, `presion` = :IPresion_art, `peso` = :IPeso, `estatura` = :IEstatura, `frecuencia_resp` = :IFResp, `ritmo_card` = :IRCard, `padecimiento_1` = :IPadecimiento_1, 
+ `padecimiento_2` = :IPadecimiento_2,  `medicamento_1` = :IMedicamento_1, `medicamento_2` = :IMedicamento_2, `medicamento_3` = :IMedicamento_3, `ultima_modificacion` = :IModifica, 
+ `fecha_modificacion` = :IAhora WHERE `id_receta` = :Id");
 
-$pdoExec = $pdoQuery_2->execute(array(":IFolio" =>$IFolio, ":INombre" =>$INombre, ":IA_Paterno"=>$IA_Paterno, ":IA_Materno"=>$IA_Materno, "IFecha_nac" => $IFecha_nac, ":ITemperatura"=>$ITemperatura, 
+
+$pdoExec = $pdoQuery_2->execute(array(":IFolio" =>$IFolio, ":INombre" =>$INombre, ":IA_Paterno"=>$IA_Paterno, ":IA_Materno"=>$IA_Materno, "IFecha_nac" => $IFecha_nac, 
+":ITemperatura"=>$ITemperatura, 
 ":IPresion_art"=>$IPresion_art, ":IPeso"=>$IPeso, ":IEstatura"=>$IEstatura, ":IFResp"=>$IFResp, ":IRCard"=>$IRCard, ":IPadecimiento_1"=>$IPadecimiento_1, 
-":IPadecimiento_2"=>$IPadecimiento_2, ":IMedicamento_1"=>$IMedicamento_1, ":IMedicamento_2"=>$IMedicamento_2, ":IMedicamento_3"=>$IMedicamento_3, ":ICaptura"=>$ICaptura, ":IAhora" => $IAhora ));
+":IPadecimiento_2"=>$IPadecimiento_2, ":IMedicamento_1"=>$IMedicamento_1, ":IMedicamento_2"=>$IMedicamento_2, ":IMedicamento_3"=>$IMedicamento_3, ":IModifica"=>$IModifica, ":IAhora" => $IAhora, 
+":Id" => $Id));
 
     if($pdoExec)
     {
-        echo 'Datos insertados';
+        echo 'Datos actualizados';
         echo "<script languaje='JavaScript'> window.location = 'consulta_pacientes.php';
 </script>";
     }else{
-        echo 'Datos No insertados';
+        echo 'Datos No actualizados';
     }
 
 } catch (Excepton $e){
